@@ -73,6 +73,17 @@ const createNote = (request, callback) => {
     })
   }
 
+  const deleteNote = (id, callback) => {
+    client.query(`delete from notes where id = '${id}';`, (err, res) => {
+      if(err) {
+        callback(err.message, null);
+        return
+      } else {
+        callback(err, res.rows);
+      }
+    })
+  }
+
   const getNotesBySearch = (search, callback) => {
     if(search){
       client.query(`select * from notes where title LIKE '%${search}%' `, (err, res) => {
@@ -91,5 +102,6 @@ const createNote = (request, callback) => {
     updateNote,
     getNoteById,
     getNotes,
-    getNotesBySearch
+    getNotesBySearch,
+    deleteNote
   }

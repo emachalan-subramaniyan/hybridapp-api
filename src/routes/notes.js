@@ -63,4 +63,19 @@ router.put("/:id", function (req, res, next) {
   );
 });
 
+router.delete("/:id", function (req, res, next) {
+  notes.deleteNote(
+    req.params.id,
+    (error, response) => {
+      if (error) {
+        res.send({ message: error, data: null });
+        return;
+      }
+      res
+        .status(200)
+        .send({ message: "note delete successfully", data: response });
+    }
+  );
+});
+
 module.exports = router;
