@@ -15,6 +15,6 @@ CREATE TABLE IF NOT EXISTS notes (
 client
   .query(create_notes_table_query)
   .then(result => {
-    console.log('user table created successfully');
+    console.log('notes table created successfully');
   })
   .catch(e => console.error('users db connection error', e.stack));

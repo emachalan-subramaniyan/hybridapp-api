@@ -1,9 +1,8 @@
 var express = require("express");
 var router = express.Router();
 const notes = require("../models/notes");
-const authConfig = require("../../../../auth/auth");
 
-router.get("/", authConfig, function (req, res, next) {
+router.get("/", function (req, res, next) {
   if (Object.keys(req.query).length === 0) {
     notes.getNotes((error, response) => {
       if (error) {
@@ -27,7 +26,7 @@ router.get("/", authConfig, function (req, res, next) {
   }
 });
 
-router.get("/:id", authConfig, function (req, res, next) {
+router.get("/:id", function (req, res, next) {
   notes.getNoteById(req.params.id, (error, response) => {
     if (error) {
       res.send({ message: error, data: null });
@@ -37,7 +36,7 @@ router.get("/:id", authConfig, function (req, res, next) {
   });
 });
 
-router.post("/", authConfig, function (req, res, next) {
+router.post("/", function (req, res, next) {
   notes.createNote(req.body, (error, response) => {
     if (error) {
       res.send({ message: error, data: null });
@@ -49,7 +48,7 @@ router.post("/", authConfig, function (req, res, next) {
   });
 });
 
-router.put("/:id", authConfig, function (req, res, next) {
+router.put("/:id", function (req, res, next) {
   notes.updateNote(
     { ...req.body, id: req.params.id },
     (error, response) => {
