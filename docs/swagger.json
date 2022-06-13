@@ -12,9 +12,9 @@
             "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         }
     },
-    "schemes": ["http"],
+    "schemes": ["https"],
     
-    "host": "localhost:8000",
+    "host": "hybridapp-beta.herokuapp.com",
     "basePath": "/",
     "paths" : {
         "/notes" : {
